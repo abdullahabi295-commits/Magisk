@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>PUBG Urdu Voice Assistant</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; text-align: center; background-color: #1a1a1a; color: white; padding: 50px; }
+        textarea { width: 80%; height: 100px; padding: 10px; font-size: 18px; border-radius: 8px; }
+        button { background-color: #ff9900; color: black; padding: 15px 30px; font-size: 20px; border: none; cursor: pointer; border-radius: 5px; margin-top: 20px; font-weight: bold; }
+        button:hover { background-color: #e68a00; }
+    </style>
+</head>
+<body>
+
+    <h2>PUBG Gaming Urdu Voice 🎙️</h2>
+    
+    <textarea id="text-to-speak" placeholder="Yahan Urdu mein kuch likhen..."></textarea>
+    <br>
+    <button onclick="speakUrdu()">Sunaen (Speak)</button>
+
+    <script>
+        function speakUrdu() {
+            // Text box se value lena
+            const text = document.getElementById('text-to-speak').value;
+            
+            if (text.trim() === "") {
+                alert("Pehle kuch likhen!");
+                return;
+            }
+
+            // Speech API setup
+            const utterance = new SpeechSynthesisUtterance(text);
+            
+            // Language Urdu (ur-PK) set karna
+            utterance.lang = 'ur-PK'; 
+            utterance.pitch = 1; // Awaz ki bulandi
+            utterance.rate = 0.9; // Bolne ki raftar
+
+            // Play karna
+            window.speechSynthesis.speak(utterance);
+        }
+    </script>
+
+</body>
+</html>
